@@ -8,7 +8,7 @@ class Teacher(models.Model):
     password = models.CharField(max_length=100)
     qualification = models.CharField(max_length=100)
     mobile_no = models.CharField(max_length=100)
-    address = models.TextField()
+    skills = models.TextField()
 
     def __str__(self):
         return str(self.full_name)
@@ -30,6 +30,8 @@ class Course(models.Model):
     description = models.TextField()
     category = models.ForeignKey(CourseCategory, on_delete=models.CASCADE)
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
+    featured_image = models.ImageField(upload_to='course_images', blank=True, null=True)
+    technologies = models.TextField()
 
     def __str__(self):
         return str(self.title)
